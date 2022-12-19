@@ -12,6 +12,8 @@
     "nuxt-windicss": "^2.6.0"
   },
   "dependencies": {
-    "@heroicons/vue": "^2.0.13"
+    "@heroicons/vue": "^2.0.13",
+    "@supabase/supabase-js": "^2.2.1",
+    "bcrypt": "^5.1.0"
   }
 }
