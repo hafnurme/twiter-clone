@@ -1,8 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
 import bcrypt from "bcrypt";
 
-const config = useRuntimeConfig();
-const supabase = createClient(config.supabaseUrl, config.supabaseKey);
+const supabaseUrl = process.env.NUXT_supabaseUrl;
+const supabaseKey = process.env.NUXT_supabaseKey;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
@@ -28,7 +29,7 @@ export default defineEventHandler(async (event) => {
   const { data, error } = await supabase
     .from("User")
     .insert({ username, email, password: encryptPw, name })
-    .select();
+    .select("username,email,name");
 
   return {
     data,
