@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-col h-screen xs:items-end xl:items-start">
+    <div class="flex flex-col h-screen xs:items-center xl:items-start">
 
-        <div class="p-2 my-2 w-min rounded-full hover:bg-blue-100 dark:hover:bg-gray-600" :class="transition">
+        <div class="p-2 w-min rounded-full hover:bg-blue-100 dark:hover:bg-gray-600" :class="transition">
             <nuxt-link to="/">
                 <div class="w-8 h-8">
                     <LogoTwiter />
@@ -10,7 +10,7 @@
         </div>
 
 
-        <div>
+        <div class="w-full">
 
             <SidebarLeftTab>
                 <template v-slot:icon>

@@ -1,6 +1,6 @@
 <template>
     <nuxt-link to="#"
-        class="flex w-min xl:w-full items-center p-3 rounded-full  hover:bg-gray-200 dark:text-white dark:hover:bg-blue-gray-600 mb-2"
+        class="flex w-min xl:w-full items-center p-3 rounded-full  hover:bg-gray-200 dark:text-white dark:hover:bg-blue-gray-600 mb-1"
         :class="transition">
 
         <div class="w-6 h-6">

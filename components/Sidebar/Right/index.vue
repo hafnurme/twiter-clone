@@ -1,6 +1,7 @@
 <template>
-    <div class="p-5 box-border">
-        <input type="text" name="search" id="search" class=" rounded-full border-2 px-2 py-1 outline-none w-full"
+    <div>
+        <input type="text" name="search" id="search"
+            class=" rounded-full border px-4 py-2 mt-3 outline-none w-full bg-gray-100 dark:(bg-gray-700 border-gray-600 text-white)"
             placeholder="Search">
 
         <SidebarRightCard title="What's happening">
@@ -8,7 +9,7 @@
                 class="px-3 py-2 border-b dark:border-gray-700 cursor-pointer hover:(bg-gray-200 dark:bg-gray-600)"
                 :class="transition">
                 <h4 class="text-sm font-semibold">{{ whathappen.title }}</h4>
-                <h6 class="text-xs text-gray-400">{{ whathappen.count }} Tweets</h6>
+                <h6 class="text-xs text-gray-500">{{ whathappen.count }} Tweets</h6>
             </div>
         </SidebarRightCard>
 

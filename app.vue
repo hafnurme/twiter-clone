@@ -6,27 +6,26 @@
   <div :class="{ 'dark': theme }">
 
 
-    <div class="min-h-screen bg-white dark:bg-dim-900">
+    <div class="min-h-screen bg-white dark:bg-dim-900 ">
 
-      <div class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg-gap-5">
-
+      <div class="flex w-min md:max-w-[1280px] mx-auto">
         <!-- Left sidebar -->
-        <aside class="hidden md:block md:col-span-1 xl:col-span-2">
+        <aside class="xl:w-[20%] max-w-[220px] px-2 xl:px-5">
           <SidebarLeft />
         </aside>
 
         <!-- Main content -->
-        <main class="h-screen col-span-12 md:col-span-8 xl:col-span-6 bg-dark-50">
-          Main
+        <main class="min-w-[614px]">
+          <RouterView />
         </main>
 
         <!-- right sidebar -->
-        <aside class="hidden md:block md:col-span-3 xl:col-span-4">
+        <aside class="xl:(px-5) xl:w-[400px] w-[300px] hidden md:(block px-3)">
           <SidebarRight />
         </aside>
       </div>
-
     </div>
+
 
   </div>
 

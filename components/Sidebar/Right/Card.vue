@@ -1,5 +1,5 @@
 <template>
-    <div class="my-3 bg-gray-50 dark:(text-white bg-dim-700) rounded-2xl" :class="twitterBorder">
+    <div class="my-3 bg-gray-100 dark:(text-white bg-dim-700) rounded-2xl" :class="twitterBorder">
 
         <h1 class="p-3">{{ title }}</h1>
 
