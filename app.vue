@@ -7,7 +7,7 @@
   <div :class="{ 'dark': theme }">
 
     <!-- App -->
-    <div v-if="false" class=" min-h-screen bg-white dark:bg-dim-900 ">
+    <div v-if="user" class=" min-h-screen bg-white dark:bg-dim-900 ">
 
       <div class=" flex w-min md:max-w-[1280px] mx-auto">
         <!-- Left sidebar -->
@@ -35,4 +35,10 @@
 
 <script setup>
 const theme = ref(false)
+const { useAuthUser, initAuth } = useAuth()
+const user = useAuthUser()
+
+onBeforeMount(() => {
+  initAuth()
+})
 </script>

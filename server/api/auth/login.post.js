@@ -20,12 +20,12 @@ export default defineEventHandler(async (event) => {
     );
   }
 
-  const { data: user } = await supabase
+  const { data: user, error } = await supabase
     .from("User")
-    .select("id, username, password")
+    .select()
     .eq("username", username);
 
-  if (user.length < 1) {
+  if (user.length < 1 || !user) {
     return sendError(
       event,
       createError({
@@ -56,7 +56,13 @@ export default defineEventHandler(async (event) => {
   sendRefreshToken(event, refreshToken);
 
   return {
-    message: `Successfully login as '${username}'`,
+    user: {
+      id: user[0].id,
+      email: user[0].email,
+      name: user[0].name,
+      username: user[0].username,
+      profileImage: user[0].profileImage,
+    },
     access_token: accessToken,
   };
 });

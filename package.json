@@ -15,6 +15,7 @@
     "@heroicons/vue": "^2.0.13",
     "@supabase/supabase-js": "^2.2.1",
     "bcrypt": "^5.1.0",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "url-pattern": "^1.0.3"
   }
 }

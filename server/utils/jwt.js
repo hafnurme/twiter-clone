@@ -14,6 +14,22 @@ const generateRefreshToken = (user) => {
   });
 };
 
+export const decodeRefreshToken = (token) => {
+  try {
+    return jwt.verify(token, config.jwtRefreshToken);
+  } catch (error) {
+    return null;
+  }
+};
+
+export const decodeAccessToken = (token) => {
+  try {
+    return jwt.verify(token, config.jwtAccessToken);
+  } catch (error) {
+    return null;
+  }
+};
+
 export const generateToken = (user) => {
   const accessToken = generateAccessToken(user);
 

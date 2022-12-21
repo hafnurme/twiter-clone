@@ -5,7 +5,6 @@
         <div class="w-full">
             <UIButton text="Login" @click="handleClick" />
         </div>
-        {{ authData.username }}
         <div class="flex items-center">
             <hr class="flex-1 border-gray-400">
             <span class="mx-2 dark:text-white">or</span>
