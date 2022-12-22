@@ -24,7 +24,6 @@ export default () => {
 
       setToken(data.access_token);
       setUser(data.user);
-      // console.log(data);
     } catch (error) {
       return error;
     }
@@ -42,10 +41,26 @@ export default () => {
     });
   };
 
+  const getUser = async () => {
+    try {
+      const data = await $fetch("/api/auth/user", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${useAuthToken().value}`,
+        },
+      });
+      console.log(data);
+      setUser(data);
+    } catch (error) {
+      reject(error);
+    }
+  };
+
   const initAuth = () => {
     return new Promise(async (resolve, reject) => {
       try {
         await refreshToken();
+        await getUser();
         resolve(true);
       } catch (error) {
         reject(error);
@@ -57,5 +72,6 @@ export default () => {
     login,
     useAuthUser,
     initAuth,
+    useAuthToken,
   };
 };

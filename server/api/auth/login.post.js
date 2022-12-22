@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
     .select()
     .eq("username", username);
 
-  if (user.length < 1 || !user) {
+  if (!user || user.length < 1) {
     return sendError(
       event,
       createError({

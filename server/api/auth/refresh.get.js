@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { generateToken, sendRefreshToken } from "../../utils/jwt.js";
+import { generateToken } from "../../utils/jwt.js";
 import { decodeRefreshToken } from "../../utils/jwt.js";
 
 const supabaseUrl = process.env.NUXT_supabaseUrl;
@@ -8,7 +8,6 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default defineEventHandler(async (event) => {
   const refreshToken = getCookie(event, "refreshToken");
-  //   const refreshToken = cookie.refresh_token;
 
   if (!refreshToken) {
     return sendError(
@@ -54,7 +53,4 @@ export default defineEventHandler(async (event) => {
       }))
     );
   }
-  return {
-    msg: "hell",
-  };
 });

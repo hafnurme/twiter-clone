@@ -7,7 +7,7 @@ const supabaseKey = process.env.NUXT_supabaseKey;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default defineEventHandler(async (event) => {
-  const endpoint = ["api/auth/user"];
+  const endpoint = ["/api/auth/user"];
 
   const isHandledByThisMiddleware = endpoint.some((endpoint) => {
     const pattern = new UrlPattern(endpoint);
@@ -16,7 +16,6 @@ export default defineEventHandler(async (event) => {
   });
 
   if (!isHandledByThisMiddleware) {
-    event.context.gg = { msg: "gg" };
     return;
   }
 
@@ -37,9 +36,12 @@ export default defineEventHandler(async (event) => {
   try {
     const userId = decoded.userId;
 
-    const { data } = await supabase.from("User").select().eq("id", userId);
+    const { data } = await supabase
+      .from("User")
+      .select("id, email ,name , username, profileImage")
+      .eq("id", userId.data[0].id);
 
-    event.context.user = data;
+    event.context.auth = { data: data[0] };
   } catch (error) {
     return;
   }
