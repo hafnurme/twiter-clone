@@ -7,7 +7,7 @@ const supabaseKey = process.env.NUXT_supabaseKey;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default defineEventHandler(async (event) => {
-  const endpoint = ["/api/auth/user"];
+  const endpoint = ["/api/auth/user", "/api/user/tweets"];
 
   const isHandledByThisMiddleware = endpoint.some((endpoint) => {
     const pattern = new UrlPattern(endpoint);

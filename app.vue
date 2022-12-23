@@ -6,8 +6,12 @@
 
   <div :class="{ 'dark': theme }">
 
+    <div v-if="isLoading">
+      <Loading />
+    </div>
+
     <!-- App -->
-    <div v-if="user" class=" min-h-screen bg-white dark:bg-dim-900 ">
+    <div v-else-if="user" class="min-h-screen bg-white dark:bg-dim-900 ">
 
       <div class=" flex w-min md:max-w-[1280px] mx-auto">
         <!-- Left sidebar -->
@@ -27,6 +31,7 @@
       </div>
     </div>
 
+
     <AuthPage v-else />
 
   </div>
@@ -35,8 +40,9 @@
 
 <script setup>
 const theme = ref(false)
-const { useAuthUser, initAuth } = useAuth()
+const { useAuthUser, initAuth, useAuthLoading } = useAuth()
 const user = useAuthUser()
+const isLoading = useAuthLoading()
 
 onBeforeMount(() => {
   initAuth()

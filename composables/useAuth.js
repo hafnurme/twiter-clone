@@ -1,6 +1,9 @@
+import jwtDecode from "jwt-decode";
+
 export default () => {
-  const useAuthToken = () => useState();
-  const useAuthUser = () => useState();
+  const useAuthToken = () => useState("auth_token");
+  const useAuthUser = () => useState("auth_user");
+  const useAuthLoading = () => useState("auth_loading", () => true);
 
   const setToken = (newToken) => {
     const authToken = useAuthToken();
@@ -10,6 +13,11 @@ export default () => {
   const setUser = (newUser) => {
     const authUser = useAuthUser();
     authUser.value = newUser;
+  };
+
+  const setLoading = (value) => {
+    const authLoading = useAuthLoading();
+    authLoading.value = value;
   };
 
   const login = async (credential) => {
@@ -49,21 +57,43 @@ export default () => {
           Authorization: `Bearer ${useAuthToken().value}`,
         },
       });
-      console.log(data);
       setUser(data);
     } catch (error) {
       reject(error);
     }
   };
 
+  const reRefreshToken = () => {
+    const authToken = useAuthToken();
+
+    if (!authToken.value) {
+      return;
+    }
+
+    const jwt = jwtDecode(authToken.value);
+
+    const newRereshTime = jwt.exp - 60000;
+
+    setTimeout(async () => {
+      await refreshToken();
+      reRefreshToken();
+    }, newRereshTime);
+  };
+
   const initAuth = () => {
     return new Promise(async (resolve, reject) => {
+      setLoading(true);
       try {
         await refreshToken();
         await getUser();
+
+        reRefreshToken();
+
         resolve(true);
       } catch (error) {
         reject(error);
+      } finally {
+        setLoading(false);
       }
     });
   };
@@ -73,5 +103,6 @@ export default () => {
     useAuthUser,
     initAuth,
     useAuthToken,
+    useAuthLoading,
   };
 };
