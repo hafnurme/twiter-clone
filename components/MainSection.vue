@@ -6,7 +6,7 @@
         <div v-if="isLoading" class="flex-1 grid place-items-center">
             <UISpinner />
         </div>
-        <div v-else class="px-4">
+        <div v-else>
             <slot />
         </div>
     </div>

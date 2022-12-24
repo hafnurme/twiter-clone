@@ -18,7 +18,6 @@
         <aside class="xl:w-[20%] max-w-[220px] px-2 xl:px-5">
           <SidebarLeft />
         </aside>
-
         <!-- Main content -->
         <main class="min-w-[614px]">
           <RouterView />
@@ -30,6 +29,7 @@
         </aside>
       </div>
     </div>
+
 
 
     <AuthPage v-else />

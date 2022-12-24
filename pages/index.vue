@@ -1,11 +1,13 @@
 <template>
     <div class="h-full">
         <MainSection title="Home" :isLoading="isLoading">
-            This is our Home page
+            <TweetsForm :user="user" />
         </MainSection>
     </div>
 </template>
 
 <script setup>
 const isLoading = ref(false)
+const { useAuthUser } = useAuth()
+const user = useAuthUser().value
 </script>
