@@ -29,7 +29,6 @@ export default () => {
           password: credential.password,
         },
       });
-
       setToken(data.access_token);
       setUser(data.user);
     } catch (error) {
@@ -57,14 +56,14 @@ export default () => {
           Authorization: `Bearer ${useAuthToken().value}`,
         },
       });
-      setUser(data);
+      setUser(data.user);
     } catch (error) {
-      reject(error);
+      return error;
     }
   };
 
   const reRefreshToken = () => {
-    const authToken = useAuthToken();
+    const authToken = useAuthToken().value;
 
     if (!authToken.value) {
       return;

@@ -35,11 +35,10 @@ export default defineEventHandler(async (event) => {
 
   try {
     const userId = decoded.userId;
-
     const { data } = await supabase
       .from("User")
       .select("id, email ,name , username, profileImage")
-      .eq("id", userId.data[0].id);
+      .eq("id", userId);
 
     event.context.auth = { data: data[0] };
   } catch (error) {

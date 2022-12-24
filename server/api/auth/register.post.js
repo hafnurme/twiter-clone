@@ -11,6 +11,8 @@ export default defineEventHandler(async (event) => {
   const { username, email, password, repeatPassword, name } = body;
   const encryptPw = bcrypt.hashSync(password, 10);
 
+  const randomNum = Math.floor(Math.random() * Date.now());
+
   const invalidParams = () => {
     return sendError(
       event,
@@ -28,7 +30,13 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await supabase
     .from("User")
-    .insert({ username, email, password: encryptPw, name })
+    .insert({
+      username,
+      email,
+      password: encryptPw,
+      name,
+      profileImage: `https://avatars.dicebear.com/api/micah/${randomNum}.svg`,
+    })
     .select("username,email,name");
 
   return {

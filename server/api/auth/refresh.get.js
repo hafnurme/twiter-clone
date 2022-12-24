@@ -37,9 +37,12 @@ export default defineEventHandler(async (event) => {
   const token = decodeRefreshToken(refreshToken);
 
   try {
-    const user = await supabase.from("User").select().eq("id", token.userId);
+    const { data: user } = await supabase
+      .from("User")
+      .select()
+      .eq("id", token.userId);
 
-    const { accessToken } = generateToken(user);
+    const { accessToken } = generateToken(user[0].id);
 
     return {
       access_token: accessToken,
