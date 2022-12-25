@@ -11,11 +11,8 @@ export default defineEventHandler(async (event) => {
 
   if (!refreshToken) {
     return sendError(
-      (event,
-      createError({
-        statusMessage: "refreshToken invalid",
-        statusCode: 401,
-      }))
+      event,
+      createError({ statusCode: 401, statusMessage: "refreshToken Invalid" })
     );
   }
 
@@ -26,11 +23,8 @@ export default defineEventHandler(async (event) => {
 
   if (!rToken) {
     return sendError(
-      (event,
-      createError({
-        statusMessage: "refreshToken invalid",
-        statusCode: 401,
-      }))
+      event,
+      createError({ statusCode: 401, statusMessage: "refreshToken Invalid" })
     );
   }
 
@@ -49,11 +43,8 @@ export default defineEventHandler(async (event) => {
     };
   } catch (error) {
     return sendError(
-      (event,
-      createError({
-        statusMessage: "Something Went Wrong",
-        statusCode: 500,
-      }))
+      event,
+      createError({ statusCode: 401, statusMessage: "refreshToken Invalid" })
     );
   }
 });
