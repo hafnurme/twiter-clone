@@ -11,20 +11,20 @@
     </div>
 
     <!-- App -->
-    <div v-else-if="user" class="min-h-screen bg-white dark:bg-dim-900 ">
+    <div v-else-if="user" class="min-h-screen bg-white dark:bg-dim-900 app">
 
-      <div class=" flex w-min md:max-w-[1280px] mx-auto">
+      <div class="flex w-screen xs:w-[614px] sm:w-min md:(max-w-7xl border-x) xl:(w-[1280px]) mx-auto relative">
         <!-- Left sidebar -->
-        <aside class="xl:w-[20%] max-w-[220px] px-2 xl:px-5">
+        <aside class="xl:w-[250px]">
           <SidebarLeft />
         </aside>
         <!-- Main content -->
-        <main class="min-w-[614px]">
+        <main class=" w-full xs:w-[614px] xl:w-[610px]">
           <RouterView />
         </main>
 
         <!-- right sidebar -->
-        <aside class="xl:(px-5) xl:w-[400px] w-[300px] hidden md:(block px-3)">
+        <aside class="xl:(px-5 flex-1) w-[300px] hidden md:(block px-5)">
           <SidebarRight />
         </aside>
       </div>
@@ -37,6 +37,12 @@
   </div>
 
 </template>
+
+<style>
+* {
+  scrollbar-width: none;
+}
+</style>
 
 <script setup>
 const theme = ref(false)

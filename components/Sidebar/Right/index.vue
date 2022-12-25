@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="max-h-screen overflow-scroll sticky top-0">
         <input type="text" name="search" id="search"
             class=" rounded-full border px-4 py-2 mt-3 outline-none w-full bg-gray-100 dark:(bg-gray-700 border-gray-600 text-white)"
             placeholder="Search">

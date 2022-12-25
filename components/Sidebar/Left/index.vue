@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col h-screen xs:items-center xl:items-start">
+    <div class="flex flex-col h-screen xs:items-center xl:items-start p-1 md:p-3 sticky top-0">
 
         <div class="p-2 w-min rounded-full hover:bg-blue-100 dark:hover:bg-gray-600" :class="transition">
             <nuxt-link to="/">

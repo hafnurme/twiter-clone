@@ -1,6 +1,6 @@
 <template>
     <form class="flex" @submit.prevent="handleSubmit">
-        <div class="w-11 h-11 bg-gray-200 overflow-hidden rounded-full mr-4">
+        <div class="w-12 h-12 bg-gray-200 overflow-hidden rounded-full mr-4">
             <img :src="profilePict" alt="profilepicture">
         </div>
         <div class=" flex-1">
@@ -9,7 +9,7 @@
             <div class="max-h-[300px] mt-2 overflow-hidden relative inline-block border rounded-md"
                 v-if="inputImageUrl">
 
-                <button class="w-6 h-6 bg-gray-200 border rounded-full absolute right-1 top-1"
+                <button class="w-6 h-6 bg-gray-200 rounded-full absolute right-1 top-1" :class="twitterBorder"
                     @click.prevent="handleResetInputImage">&cross;
                 </button>
 
@@ -44,9 +44,9 @@ const emit = defineEmits(['onSubmit'])
 const handleSubmit = (data) => {
     const tempForm = new FormData(data.target)
 
-    // emit('onSubmit', tempForm)
+    emit('onSubmit', tempForm)
 
-    // data.target.reset()
+    data.target.reset()
 }
 const handleImageChange = (inputImage) => {
     const file = inputImage.target.files[0]
